@@ -33,6 +33,7 @@ public class ProdutoController {
                 .orElse(ResponseEntity.notFound().build()); //Retorna 404 Not Found
     }
 
+    @Operation(summary = "Salvar produto cadastrado", description = "Salva o produto que foi cadastrado")
     @PostMapping
     public Produto salvar(@RequestBody Produto produto) {
         return service.salvar(produto);
