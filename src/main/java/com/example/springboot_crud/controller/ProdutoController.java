@@ -28,6 +28,7 @@ public class ProdutoController {
         return service.listarTodos();
     }
 
+    @Operation(summary = "Buscar produto por ID", description = "Retorna um produto com base no seu ID")
     @GetMapping("/{id}")
     public ResponseEntity<Produto> buscarPorId(@PathVariable Long id) {
         return service.buscarPorId(id)
