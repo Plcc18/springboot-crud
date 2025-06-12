@@ -53,4 +53,13 @@ public class ProdutoController {
                     return ResponseEntity.ok(service.salvar(p)); //Retorna 200 OK e salva
                 }).orElse(ResponseEntity.notFound().build()); //Retorna 404 Not Found
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deletar(@PathVariable Long id) {
+        return service.buscarPorId(id)
+                .map(p -> {
+                    service.deletar(id);
+                    return ResponseEntity.noContent().build();
+                }).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }
