@@ -30,9 +30,9 @@ Atualmente, o Swagger está configurado, mas **ainda faltam anotações e descri
 
 ## 🛠️ Tarefas Pendentes
 
-- [ ] Implementar todos os endpoints (Create, Read, Update, Delete)
+- [x] Implementar todos os endpoints (Create, Read, Update, Delete)
 - [ ] Documentar os endpoints no Swagger com descrições e exemplos
-- [ ] Integrar com um banco de dados (por exemplo, H2, MySQL ou PostgreSQL)
+- [x] Integrar com um banco de dados (por exemplo, H2, MySQL ou PostgreSQL)
 - [ ] Implementar validações nos dados de entrada
 - [ ] Adicionar tratamento de erros global com @ControllerAdvice
 
