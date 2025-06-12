@@ -38,4 +38,14 @@ public class ProdutoController {
     public Produto salvar(@RequestBody Produto produto) {
         return service.salvar(produto);
     }
+
+    @PostMapping("/{id}")
+    public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody Produto produto) {
+        return service.buscarPorId(id)
+                .map(p -> {
+                    p.setNome(produto.getNome());
+                    p.setPreco(produto.getPreco());
+                    return ResponseEntity.ok(service.salvar(p)); //Retorna 200 OK e salva
+                }).orElse(ResponseEntity.notFound().build()); //Retorna 404 Not Found
+    }
 }
