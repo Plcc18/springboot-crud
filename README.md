@@ -46,6 +46,18 @@ cd springboot-crud
 Certifique-se de ter o Java 17+ e o Maven instalados. Em seguida, execute:
 
 ```
-./mvnw spring-boot:run
+mvn spring-boot:run
 ```
+
+## 📄 Documentação com Swagger
+
+- Acesse a documentação da API:`http://localhost:8080/swagger-ui/index.html`
+
+## 💾 Banco de Dados H2
+
+- Console web do banco H2 disponível em:`http://localhost:8080/h2-console`
+- JDBC URL padrão: `jdbc:h2:file:./data/springbootcruddb`
+- Usuário: `sa`
+- Senha: (vazia)
+
 Desenvolvido por Plcc18 – Em constante aprendizado 🚀

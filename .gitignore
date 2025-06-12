@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignorar arquivo do banco H2 na pasta data
+data/springbootcruddb.mv.db
