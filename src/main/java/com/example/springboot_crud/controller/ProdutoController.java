@@ -39,7 +39,7 @@ public class ProdutoController {
         return service.salvar(produto);
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody Produto produto) {
         return service.buscarPorId(id)
                 .map(p -> {
