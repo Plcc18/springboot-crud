@@ -54,6 +54,7 @@ public class ProdutoController {
                 }).orElse(ResponseEntity.notFound().build()); //Retorna 404 Not Found
     }
 
+    @Operation(summary = "Deletar produto cadastrado", description = "Deleta o produto que foi cadastrado pelo ID")
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deletar(@PathVariable Long id) {
         return service.buscarPorId(id)
