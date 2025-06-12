@@ -39,12 +39,17 @@ public class ProdutoController {
         return service.salvar(produto);
     }
 
+    @Operation(summary = "Atualizar produto cadastrado", description = "Atualiza o produto que foi cadastrado pelo ID")
     @PutMapping("/{id}")
     public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody Produto produto) {
         return service.buscarPorId(id)
                 .map(p -> {
-                    p.setNome(produto.getNome());
-                    p.setPreco(produto.getPreco());
+                    if (produto.getNome() != null) {
+                        p.setNome(produto.getNome());
+                    }
+                    if (produto.getPreco() != null) {
+                        p.setPreco(produto.getPreco());
+                    }
                     return ResponseEntity.ok(service.salvar(p)); //Retorna 200 OK e salva
                 }).orElse(ResponseEntity.notFound().build()); //Retorna 404 Not Found
     }

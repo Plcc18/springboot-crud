@@ -8,8 +8,11 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = true)
     private String nome;
-    private double preco;
+
+    @Column(nullable = true)
+    private Double preco;
 
     //Getter e Setters
     public Long getId() {
@@ -28,7 +31,7 @@ public class Produto {
         this.nome = nome;
     }
 
-    public double getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
