@@ -1,20 +1,25 @@
 package com.example.springboot_crud.model;
 
 import jakarta.persistence.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
 public class Produto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "ID único do produto, gerado automaticamente", example = "1", accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
 
     @Column(nullable = true)
+    @Schema(description = "Nome do produto", example = "Camiseta Polo")
     private String nome;
 
     @Column(nullable = true)
+    @Schema(description = "Preço do produto", example = "79.90")
     private Double preco;
 
-    //Getter e Setters
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -35,8 +40,7 @@ public class Produto {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
-
 }
