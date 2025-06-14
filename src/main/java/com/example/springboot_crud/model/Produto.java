@@ -15,13 +15,11 @@ public class Produto {
     private Long id;
 
     @NotBlank(message = "O nome não pode ser vazio")
-    @Column(nullable = true)
     @Schema(description = "Nome do produto", example = "Camiseta Polo")
     private String nome;
 
     @NotNull(message = "O preço é obrigatório")
     @PositiveOrZero(message = "O preço não pode ser negativo")
-    @Column(nullable = true)
     @Schema(description = "Preço do produto", example = "79.90")
     private Double preco;
 

@@ -3,11 +3,11 @@ package com.example.springboot_crud.controller;
 import com.example.springboot_crud.model.Produto;
 import com.example.springboot_crud.service.ProdutoService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,18 +25,16 @@ public class ProdutoController {
         this.service = service;
     }
 
-    @Operation(summary = "Listar todos os produtos", description = "Retorna todos os produtos da lista cadastrados")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Lista de produtos retornada com sucesso",
-                    content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Produto.class)))
-    })
+    @Operation(summary = "Listar todos os produtos", description = "Retorna todos os produtos cadastrados")
+    @ApiResponse(responseCode = "200", description = "Lista de produtos retornada com sucesso",
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Produto.class)))
     @GetMapping
     public List<Produto> listarTodos() {
         return service.listarTodos();
     }
 
-    @Operation(summary = "Buscar produto por ID", description = "Retorna um produto com base no seu ID")
+    @Operation(summary = "Buscar produto por ID", description = "Retorna um produto pelo ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Produto encontrado",
                     content = @Content(mediaType = "application/json",
@@ -50,18 +48,17 @@ public class ProdutoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @Operation(summary = "Salvar produto cadastrado", description = "Salva o produto que foi cadastrado")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Produto salvo com sucesso",
-                    content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Produto.class)))
-    })
+    @Operation(summary = "Criar um novo produto", description = "Salva um novo produto no sistema")
+    @ApiResponse(responseCode = "201", description = "Produto criado com sucesso",
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Produto.class)))
     @PostMapping
-    public Produto salvar(@RequestBody @Valid Produto produto) {
-        return service.salvar(produto);
+    public ResponseEntity<Produto> salvar(@RequestBody @Valid Produto produto) {
+        Produto salvo = service.salvar(produto);
+        return ResponseEntity.status(201).body(salvo);
     }
 
-    @Operation(summary = "Atualizar produto cadastrado", description = "Atualiza o produto que foi cadastrado pelo ID")
+    @Operation(summary = "Atualizar um produto", description = "Atualiza parcialmente ou totalmente um produto pelo ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Produto atualizado com sucesso",
                     content = @Content(mediaType = "application/json",
@@ -72,17 +69,18 @@ public class ProdutoController {
     public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody Produto produto) {
         return service.buscarPorId(id)
                 .map(p -> {
-                    if (produto.getNome() != null) {
+                    if (produto.getNome() != null && !produto.getNome().isBlank()) {
                         p.setNome(produto.getNome());
                     }
                     if (produto.getPreco() != null) {
                         p.setPreco(produto.getPreco());
                     }
-                    return ResponseEntity.ok(service.salvar(p));
+                    Produto atualizado = service.salvar(p);
+                    return ResponseEntity.ok(atualizado);
                 }).orElse(ResponseEntity.notFound().build());
     }
 
-    @Operation(summary = "Deletar produto cadastrado", description = "Deleta o produto que foi cadastrado pelo ID")
+    @Operation(summary = "Deletar produto", description = "Remove um produto pelo ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Produto deletado com sucesso", content = @Content),
             @ApiResponse(responseCode = "404", description = "Produto não encontrado", content = @Content)
