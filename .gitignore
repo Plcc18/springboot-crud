@@ -34,3 +34,4 @@ build/
 
 # Ignorar arquivo do banco H2 na pasta data
 data/springbootcruddb.mv.db
+data/springbootcruddb.trace.db
