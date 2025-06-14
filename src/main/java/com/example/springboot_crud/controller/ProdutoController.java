@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,7 +57,7 @@ public class ProdutoController {
                             schema = @Schema(implementation = Produto.class)))
     })
     @PostMapping
-    public Produto salvar(@RequestBody Produto produto) {
+    public Produto salvar(@RequestBody @Valid Produto produto) {
         return service.salvar(produto);
     }
 
