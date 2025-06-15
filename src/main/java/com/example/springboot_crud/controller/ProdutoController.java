@@ -1,5 +1,6 @@
 package com.example.springboot_crud.controller;
 
+import com.example.springboot_crud.dto.ProdutoAtualizacaoDTO;
 import com.example.springboot_crud.model.Produto;
 import com.example.springboot_crud.service.ProdutoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -66,14 +67,14 @@ public class ProdutoController {
             @ApiResponse(responseCode = "404", description = "Produto não encontrado", content = @Content)
     })
     @PutMapping("/{id}")
-    public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody Produto produto) {
+    public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody ProdutoAtualizacaoDTO produtoDto) {
         return service.buscarPorId(id)
                 .map(p -> {
-                    if (produto.getNome() != null && !produto.getNome().isBlank()) {
-                        p.setNome(produto.getNome());
+                    if (produtoDto.getNome() != null && !produtoDto.getNome().isBlank()) {
+                        p.setNome(produtoDto.getNome());
                     }
-                    if (produto.getPreco() != null) {
-                        p.setPreco(produto.getPreco());
+                    if (produtoDto.getPreco() != null) {
+                        p.setPreco(produtoDto.getPreco());
                     }
                     Produto atualizado = service.salvar(p);
                     return ResponseEntity.ok(atualizado);
