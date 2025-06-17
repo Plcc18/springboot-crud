@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Produtos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Produtos</h1>
+<a th:href="@{/produtos-view/novo}">Novo Produto</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Ações</th>
+    </tr>
+    <tr th:each="produto : ${produtos}">
+        <td th:text="${produto.id}"></td>
+        <td th:text="${produto.nome}"></td>
+        <td th:text="${produto.preco}"></td>
+        <td>
+            <a th:href="@{'/produtos-view/editar/' + ${produto.id}}">Editar</a> |
+            <a th:href="@{'/produtos-view/deletar/' + ${produto.id}}"
+               onclick="return confirm('Tem certeza que deseja deletar?');">Deletar</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
