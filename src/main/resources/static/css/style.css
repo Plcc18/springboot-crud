@@ -11,47 +11,24 @@ body {
     color: #333;
 }
 
-h1 {
-    margin-bottom: 20px;
+/* Container para título e botão da lista de produtos */
+.header-table {
+    width: 80%;
+    margin: 0 auto 15px;
+}
+
+.header-table h1 {
+    text-align: center;
     color: #444;
+    margin-bottom: 15px;
 }
 
-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 400px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.header-table a.btn-novo {
+    display: inline-block;
+    text-align: left;
 }
 
-form label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-form input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-form button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #45a049;
-}
-
+/* Estilo geral dos links botões */
 a {
     display: inline-block;
     margin-top: 20px;
@@ -72,6 +49,7 @@ a.button {
     font-weight: bold;
 }
 
+/* Botões específicos */
 a.btn-editar {
     background-color: #28a745;
 }
@@ -90,22 +68,43 @@ a.btn-deletar:hover {
 
 a.btn-novo {
     background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 a.btn-novo:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.4);
 }
 
 a.btn-voltar {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
     background-color: #6c757d;
+    color: white !important;
+    padding: 12px 0;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
 a.btn-voltar:hover {
     background-color: #5a6268;
 }
 
+/* Tabela */
 table {
-    width: 100%;
+    width: 80%;
+    margin: 20px auto;
     border-collapse: collapse;
     background-color: white;
     border-radius: 8px;
@@ -114,14 +113,17 @@ table {
 }
 
 table th, table td {
-    padding: 12px 15px;
+    padding: 15px 20px;
     border-bottom: 1px solid #ddd;
-    text-align: left;
+    text-align: center;
+    vertical-align: middle;
 }
 
 table th {
     background-color: #007BFF;
     color: white;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 table tr:hover {
@@ -129,5 +131,74 @@ table tr:hover {
 }
 
 table td a {
-    margin-right: 8px;
+    margin: 0 5px;
+}
+
+table td {
+    color: #555;
+    font-size: 15px;
+}
+
+/* Formulário - container para centralizar */
+.form-container {
+    max-width: 420px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    color: #333;
+}
+
+/* Título do formulário */
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #444;
+}
+
+/* Form com layout vertical */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels com espaçamento e destaque */
+form label {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* Inputs */
+form input {
+    padding: 10px 12px;
+    margin-top: 6px;
+    border-radius: 5px;
+    border: 1.5px solid #ccc;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Botão salvar */
+form button {
+    margin-top: 30px;
+    padding: 12px 0;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #45a049;
 }

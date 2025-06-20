@@ -6,8 +6,11 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<h1>Produtos</h1>
-<a th:href="@{/produtos-view/novo}">Novo Produto</a>
+<div class="header-table">
+    <h1>Produtos</h1>
+    <a th:href="@{/produtos-view/novo}" class="button btn-novo">+ Novo Produto</a>
+</div>
+
 <table border="1">
     <tr>
         <th>ID</th>
@@ -18,12 +21,12 @@
     <tr th:each="produto : ${produtos}">
         <td th:text="${produto.id}"></td>
         <td th:text="${produto.nome}"></td>
-        <td th:text="${produto.preco}"></td>
+        <td th:text="${#numbers.formatDecimal(produto.preco, 1, 'POINT', 2, 'COMMA')}"></td>
         <td>
-            <a th:href="@{'/produtos-view/editar/' + ${produto.id}}" class="button btn-editar">Editar</a>
+            <a th:href="@{'/produtos-view/editar/' + ${produto.id}}" class="button btn-editar">Editar ✏️</a>
             <a th:href="@{'/produtos-view/deletar/' + ${produto.id}}"
                onclick="return confirm('Tem certeza que deseja deletar?');"
-               class="button btn-deletar">Deletar</a>
+               class="button btn-deletar">Deletar 🗑️</a>
         </td>
     </tr>
 </table>
