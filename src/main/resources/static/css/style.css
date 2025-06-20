@@ -63,6 +63,47 @@ a:hover {
     text-decoration: underline;
 }
 
+a.button {
+    padding: 8px 16px;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+a.btn-editar {
+    background-color: #28a745;
+}
+
+a.btn-editar:hover {
+    background-color: #218838;
+}
+
+a.btn-deletar {
+    background-color: #dc3545;
+}
+
+a.btn-deletar:hover {
+    background-color: #c82333;
+}
+
+a.btn-novo {
+    background-color: #007BFF;
+}
+
+a.btn-novo:hover {
+    background-color: #0056b3;
+}
+
+a.btn-voltar {
+    background-color: #6c757d;
+}
+
+a.btn-voltar:hover {
+    background-color: #5a6268;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -89,15 +130,4 @@ table tr:hover {
 
 table td a {
     margin-right: 8px;
-}
-
-a.button {
-    padding: 8px 12px;
-    background-color: #007BFF;
-    color: white;
-    border-radius: 4px;
-}
-
-a.button:hover {
-    background-color: #0056b3;
 }

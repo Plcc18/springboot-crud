@@ -20,9 +20,10 @@
         <td th:text="${produto.nome}"></td>
         <td th:text="${produto.preco}"></td>
         <td>
-            <a th:href="@{'/produtos-view/editar/' + ${produto.id}}">Editar</a> |
+            <a th:href="@{'/produtos-view/editar/' + ${produto.id}}" class="button btn-editar">Editar</a>
             <a th:href="@{'/produtos-view/deletar/' + ${produto.id}}"
-               onclick="return confirm('Tem certeza que deseja deletar?');">Deletar</a>
+               onclick="return confirm('Tem certeza que deseja deletar?');"
+               class="button btn-deletar">Deletar</a>
         </td>
     </tr>
 </table>
